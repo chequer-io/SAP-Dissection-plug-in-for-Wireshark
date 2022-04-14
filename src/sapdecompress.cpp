@@ -25,7 +25,8 @@
 
 #include <glib.h>
 
-#include <epan/wmem/wmem.h>
+#include <wsutil/wmem/wmem.h>
+#include <epan/wmem_scopes.h>
 
 #include "sapdecompress.h"
 
@@ -234,7 +235,7 @@ int decompress_packet (const guint8 *in, gint in_length, guint8 *out, guint *out
 #endif
 
 	return (rt);
-};
+}
 
 DIAG_ON(frame-larger-than=)
 

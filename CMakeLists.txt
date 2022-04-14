@@ -22,11 +22,11 @@ cmake_minimum_required(VERSION 3.5)
 set(CMAKE_BACKWARDS_COMPATIBILITY 3.5)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-find_package(Wireshark 3.4)
+find_package(Wireshark 3.6)
 
 if(Wireshark_FOUND)
 
-  MESSAGE(STATUS "Wireshark 3.4 libraries found in ${Wireshark_LIB_DIR}, performing a stand-alone plug-in build.")
+  MESSAGE(STATUS "Wireshark 3.6 libraries found in ${Wireshark_LIB_DIR}, performing a stand-alone plug-in build.")
 
   if(NOT CMAKE_INSTALL_LIBDIR )
     set(CMAKE_INSTALL_LIBDIR ~/.local/lib/wireshark/plugins/${Wireshark_VERSION_MAJOR}.${Wireshark_VERSION_MINOR}/epan)
@@ -55,7 +55,7 @@ if(Wireshark_FOUND)
 
 else(Wireshark_FOUND)
 
-  MESSAGE(STATUS "Wireshark 3.4 libraries not found, performing an in-tree Wireshark plug-in build.")
+  MESSAGE(STATUS "Wireshark 3.6 libraries not found, performing an in-tree Wireshark plug-in build.")
 
   include(WiresharkPlugin)
 
@@ -65,19 +65,10 @@ else(Wireshark_FOUND)
 endif(Wireshark_FOUND)
 
 set(DISSECTOR_SRC
-	src/packet-sapdiag.c
-	src/packet-sapenqueue.c
 	src/packet-saphdb.c
-	src/packet-sapigs.c
-	src/packet-saprouter.c
-	src/packet-sapprotocol.c
-	src/packet-saprfc.c
-	src/packet-sapms.c
-	src/packet-sapsnc.c
 )
 
 set(DISSECTOR_SUPPORT_SRC
-	src/sapdecompress.cpp
 	src/vpa105CsObjInt.cpp
 	src/vpa106cslzc.cpp
 	src/vpa107cslzh.cpp
